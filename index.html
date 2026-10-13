@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070914">
+  <meta name="description" content="Nyasa Vishwas — Computer Science student and full-stack developer portfolio.">
+  <title>Nyasa Vishwas | Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <style>
+    :root{--bg:#070914;--panel:rgba(17,22,42,.67);--line:rgba(166,181,255,.14);--text:#f4f6ff;--muted:#a1a8c3;--cyan:#69e7f5;--purple:#ad8cff;--green:#9df5c4;--glow:0 0 45px rgba(105,231,245,.09)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(ellipse at 15% 5%,rgba(69,80,190,.18),transparent 34%),radial-gradient(ellipse at 88% 25%,rgba(0,210,220,.09),transparent 30%),radial-gradient(ellipse at 50% 100%,rgba(121,68,210,.12),transparent 36%)}
+    body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}.container{width:min(1120px,calc(100% - 42px));margin:auto}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid transparent;transition:.3s;background:rgba(7,9,20,.52);backdrop-filter:blur(18px)}
+    .navbar.scrolled{border-color:var(--line);background:rgba(7,9,20,.88)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-size:1.08rem;font-weight:800;letter-spacing:-.05em}.logo span{color:var(--cyan)}
+    .nav-links{display:flex;gap:25px;align-items:center;list-style:none}.nav-links a{font-size:.82rem;color:var(--muted);transition:.2s}.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+    .menu-toggle{display:none;background:none;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:1rem}
+    section{padding:105px 0;position:relative}.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px;padding-bottom:75px}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--green);font:500 .75rem 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;margin-bottom:24px}
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green);animation:pulse 1.8s infinite}
+    @keyframes pulse{50%{opacity:.45;box-shadow:0 0 3px var(--green)}}
+    h1{font-size:clamp(3.3rem,7vw,6.4rem);line-height:.99;letter-spacing:-.075em;font-weight:800;margin-bottom:22px}
+    .gradient-text{background:linear-gradient(110deg,#f6f7ff 5%,var(--cyan) 42%,var(--purple) 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .role-line{font-size:clamp(1.05rem,2.4vw,1.5rem);font-weight:600;margin-bottom:20px;min-height:2.1em}.role-line .typed{color:var(--cyan)}.typed-cursor{color:var(--purple)}
+    .hero-copy{color:var(--muted);max-width:590px;font-size:1rem;line-height:1.9;margin-bottom:30px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;font-weight:700;font-size:.85rem;border:1px solid var(--line);transition:transform .2s,border-color .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-3px);border-color:rgba(105,231,245,.55);box-shadow:var(--glow)}
+    .btn-primary{background:linear-gradient(110deg,rgba(105,231,245,.17),rgba(173,140,255,.16));border-color:rgba(105,231,245,.35)}
+    .socials{display:flex;gap:11px}.socials a{width:42px;height:42px;border:1px solid var(--line);border-radius:13px;display:grid;place-items:center;color:#c8d0ed;transition:.2s}.socials a:hover{color:var(--cyan);border-color:var(--cyan);transform:translateY(-3px)}
+    .hero-art{position:relative;min-height:370px;display:grid;place-items:center}
+    .orbit{position:absolute;border:1px solid rgba(105,231,245,.16);border-radius:50%;animation:spin 24s linear infinite}.orbit.one{width:340px;height:340px}.orbit.two{width:270px;height:270px;animation-direction:reverse;border-color:rgba(173,140,255,.2)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .orbit:before{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 20px var(--cyan);top:22%;left:4%}
+    .orbit.two:before{background:var(--purple);box-shadow:0 0 20px var(--purple);top:72%;left:91%}
+    .code-card{position:relative;width:min(330px,100%);padding:25px;border:1px solid rgba(166,181,255,.23);border-radius:22px;background:linear-gradient(145deg,rgba(22,29,55,.88),rgba(10,13,29,.84));box-shadow:0 25px 80px rgba(0,0,0,.35),0 0 50px rgba(105,231,245,.07);backdrop-filter:blur(18px);transform:rotate(-3deg)}
+    .window-dots{display:flex;gap:6px;margin-bottom:24px}.window-dots i{width:8px;height:8px;border-radius:50%;background:#ff6f8d}.window-dots i:nth-child(2){background:#f4ce76}.window-dots i:nth-child(3){background:#75e5b4}
+    .code-card pre{font: .82rem/2 'DM Mono',monospace;white-space:pre-wrap;color:#b8c4e9}.code-card .c1{color:var(--purple)}.code-card .c2{color:var(--cyan)}.code-card .c3{color:var(--green)}
+    .floating-chip{position:absolute;padding:10px 13px;border-radius:12px;background:rgba(15,20,39,.9);border:1px solid var(--line);font-size:.75rem;color:#dce5ff;box-shadow:var(--glow);backdrop-filter:blur(12px)}.chip-a{top:16%;right:0}.chip-b{bottom:14%;left:0}
+    .section-head{margin-bottom:40px;max-width:700px}.kicker{font:500 .72rem 'DM Mono',monospace;color:var(--cyan);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}.section-head h2{font-size:clamp(2rem,4vw,3.15rem);letter-spacing:-.055em;line-height:1.15;margin-bottom:14px}.section-head p{color:var(--muted);max-width:640px}
+    .glass{background:linear-gradient(145deg,rgba(21,27,49,.76),rgba(11,15,31,.7));border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(16px);box-shadow:0 18px 55px rgba(0,0,0,.12);transition:transform .25s,border-color .25s,box-shadow .25s}
+    .glass:hover{transform:translateY(-5px);border-color:rgba(105,231,245,.32);box-shadow:0 22px 65px rgba(0,0,0,.2),0 0 28px rgba(105,231,245,.045)}
+    .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.skill-card{padding:24px}.skill-card h3{font-size:1rem;margin-bottom:16px;display:flex;gap:10px;align-items:center}.skill-card h3 i{color:var(--cyan)}
+    .tags{display:flex;flex-wrap:wrap;gap:9px}.tag{font: .75rem 'DM Mono',monospace;color:#cbd4f2;border:1px solid rgba(166,181,255,.16);background:rgba(137,153,208,.07);padding:7px 10px;border-radius:9px;transition:.2s}.tag:hover{border-color:rgba(105,231,245,.55);color:var(--cyan);background:rgba(105,231,245,.06)}
+    .timeline{position:relative;margin-left:10px;padding-left:30px;border-left:1px solid rgba(105,231,245,.3)}.timeline-item{position:relative;margin-bottom:22px;padding:25px}.timeline-item:last-child{margin-bottom:0}.timeline-item:before{content:"";position:absolute;left:-37px;top:31px;width:12px;height:12px;background:var(--bg);border:2px solid var(--cyan);border-radius:50%;box-shadow:0 0 15px rgba(105,231,245,.3)}
+    .item-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:7px}.item-top h3{font-size:1.12rem;line-height:1.5}.date{font: .72rem 'DM Mono',monospace;color:var(--green);white-space:nowrap}.subline{color:var(--muted);font-size:.87rem;margin-bottom:15px}.content-list{padding-left:19px;color:#c0c7de;font-size:.9rem}.content-list li{padding:3px 0}.techline{margin-top:17px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}.techline strong{font-size:.72rem;color:var(--muted);margin-right:3px}
+    .text-link{color:var(--cyan);font-size:.8rem;font-weight:700;border-bottom:1px solid rgba(105,231,245,.25);padding-bottom:2px}.text-link:hover{border-color:var(--cyan)}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project-card{padding:26px;display:flex;flex-direction:column;min-height:320px}.project-card.featured{grid-column:span 2}.project-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:13px}.project-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(105,231,245,.22);border-radius:13px;background:rgba(105,231,245,.07);color:var(--cyan);font-size:1.05rem;flex-shrink:0}.project-card h3{font-size:1.18rem;line-height:1.4;letter-spacing:-.025em}.project-card p{font-size:.88rem;color:var(--muted);margin-bottom:13px}.project-card ul{padding-left:18px;color:#c0c7de;font-size:.83rem;margin-bottom:15px}.project-card li{padding:3px 0}.project-card .tags{margin-top:auto;padding-top:15px}.project-links{display:flex;gap:15px;margin-top:18px;flex-wrap:wrap}
+    .training-card{padding:28px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}.training-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(173,140,255,.1);border:1px solid rgba(173,140,255,.22);color:var(--purple);font-size:1.3rem}.training-card h3{font-size:1.15rem;margin-bottom:5px}.training-card p{color:var(--muted);font-size:.9rem}.training-card .tags{margin-top:15px}
+    .cert-grid,.achievement-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.cert-card,.achievement-card{padding:23px;display:flex;gap:15px;align-items:flex-start}.cert-icon,.achievement-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;flex-shrink:0;color:var(--green);background:rgba(157,245,196,.08);border:1px solid rgba(157,245,196,.19)}.cert-card h3,.achievement-card h3{font-size:.95rem;line-height:1.55;margin-bottom:6px}.cert-card p,.achievement-card p{font-size:.8rem;color:var(--muted)}
+    .education-card{padding:23px}.education-card h3{font-size:1rem;margin-bottom:5px}.education-card .school{font-size:.87rem;color:var(--muted);margin-bottom:9px}.edu-meta{display:flex;flex-wrap:wrap;gap:10px}.edu-meta span{font: .72rem 'DM Mono',monospace;color:var(--cyan);padding:5px 8px;background:rgba(105,231,245,.06);border-radius:7px}
+    .contact-panel{padding:42px;text-align:center;position:relative;overflow:hidden}.contact-panel:before{content:"";position:absolute;inset:-70% 20%;background:radial-gradient(ellipse,rgba(105,231,245,.1),transparent 65%);pointer-events:none}.contact-panel h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.06em;margin-bottom:12px;position:relative}.contact-panel p{color:var(--muted);max-width:560px;margin:0 auto 24px;position:relative}.contact-panel .hero-actions{justify-content:center;position:relative}
+    footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.78rem}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.footer-inner .socials a{width:34px;height:34px;border-radius:10px;font-size:.82rem}.made{color:#c7cce0}.made span{color:#ff7595}
+
+    .profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.profile-grid-five{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .profile-card{padding:25px;min-width:0}.profile-card h3{font-size:1.1rem;margin-bottom:6px}
+    .profile-card p{color:var(--muted);font-size:.85rem;margin-bottom:16px}
+    .profile-card img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#101426}
+    .profile-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}.profile-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.profile-metrics div{padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(137,153,208,.06)}.profile-metrics strong{display:block;font-size:1.25rem;color:var(--cyan)}.profile-metrics span{font-size:.73rem;color:var(--muted)}.profile-placeholder{min-height:90px;display:flex;gap:12px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:.78rem}.profile-placeholder i{font-size:1.35rem;color:var(--purple)}
+    .certificate-note{font-size:.8rem;color:var(--muted);margin-top:18px}
+    @media(max-width:950px){.profile-grid-five{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){.profile-grid,.profile-grid-five{grid-template-columns:1fr}}
+    .back-top{position:fixed;right:20px;bottom:20px;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(14,19,38,.85);color:var(--cyan);opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s;z-index:900}.back-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:25px}.hero-art{min-height:330px;max-width:500px;width:100%;margin:auto}.hero-copy{max-width:700px}.projects-grid{grid-template-columns:1fr}.project-card.featured{grid-column:auto}.nav-links{gap:15px}.nav-links a{font-size:.76rem}}
+    @media(max-width:650px){.container{width:min(100% - 30px,1120px)}section{padding:78px 0}.nav-inner{height:67px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:67px;left:15px;right:15px;padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(8,11,25,.97);backdrop-filter:blur(18px);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{display:block;padding:10px 7px;font-size:.9rem}.hero{padding-top:105px;min-height:auto}.hero-grid{gap:12px}.hero-art{min-height:300px}.orbit.one{width:285px;height:285px}.orbit.two{width:225px;height:225px}.code-card{width:290px;padding:20px}.chip-a{right:0;top:12%}.chip-b{left:0;bottom:8%}.skills-grid,.cert-grid,.achievement-grid{grid-template-columns:1fr}.item-top{flex-direction:column;gap:5px}.date{white-space:normal}.timeline{padding-left:23px}.timeline-item:before{left:-30px}.timeline-item{padding:20px}.training-card{grid-template-columns:1fr}.contact-panel{padding:30px 20px}.footer-inner{justify-content:center;text-align:center;flex-direction:column}.footer-inner .socials{justify-content:center}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header class="navbar" id="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Nyasa Vishwas home">nyasa<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li><li><a href="#skills">Skills</a></li><li><a href="#internship">Internship</a></li><li><a href="#projects">Projects</a></li><li><a href="#profiles">Coding Profiles</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div data-aos="fade-up">
+          <div class="eyebrow"><span class="pulse"></span> Open to opportunities</div>
+          <h1>Hi, I'm<br><span class="gradient-text">Nyasa Vishwas.</span></h1>
+          <div class="role-line">I'm a <span class="typed"></span></div>
+          <p class="hero-copy">I build thoughtful digital experiences by combining full-stack development, problem-solving, and a curiosity for AI. Currently pursuing Computer Science Engineering at Lovely Professional University.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-code"></i> Explore my work</a>
+            <a class="btn" href="#contact"><i class="fa-regular fa-paper-plane"></i> Get in touch</a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-file-pdf"></i> View resume</a>
+          </div>
+          <div class="socials" aria-label="Social links">
+            <a href="https://linkedin.com/in/nyasavishwas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/NyasaVishwas" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:nyasaavishwass@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="hero-art" data-aos="zoom-in" data-aos-delay="150" aria-label="Decorative code illustration">
+          <div class="orbit one"></div><div class="orbit two"></div>
+          <div class="code-card">
+            <div class="window-dots"><i></i><i></i><i></i></div>
+            <pre><span class="c1">const</span> developer = {
+  name: <span class="c3">"Nyasa Vishwas"</span>,
+  focus: <span class="c3">"Full-stack"</span>,
+  mindset: <span class="c3">"Always learning"</span>,
+  coffee: <span class="c2">true</span>,
+  build() {
+    <span class="c1">return</span> <span class="c3">"Ideas → impact"</span>;
+  }
+};</pre>
+          </div>
+          <div class="floating-chip chip-a"><i class="fa-solid fa-sparkles"></i> Building with purpose</div>
+          <div class="floating-chip chip-b"><i class="fa-solid fa-terminal"></i> Learn · Build · Repeat</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">01 / Toolkit</div><h2>Skills that bring ideas <span class="gradient-text">to life.</span></h2><p>A practical toolkit across programming, web development, platforms, and collaborative work.</p></div>
+        <div class="skills-grid">
+          <article class="glass skill-card" data-aos="fade-up"><h3><i class="fa-solid fa-code"></i> Languages</h3><div class="tags"><span class="tag">C++</span><span class="tag">Java</span><span class="tag">SQL</span></div></article>
+          <article class="glass skill-card" data-aos="fade-up" data-aos-delay="70"><h3><i class="fa-solid fa-layer-group"></i> Technologies</h3><div class="tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Tailwind CSS</span><span class="tag">MongoDB</span><span class="tag">Power BI</span><span class="tag">Microsoft Excel</span></div></article>
+          <article class="glass skill-card" data-aos="fade-up" data-aos-delay="120"><h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Platforms</h3><div class="tags"><span class="tag">VS Code</span><span class="tag">Android Studio</span><span class="tag">GitHub</span><span class="tag">Docker</span><span class="tag">Jupyter Notebook</span><span class="tag">Streamlit</span></div></article>
+          <article class="glass skill-card" data-aos="fade-up" data-aos-delay="150"><h3><i class="fa-solid fa-chart-pie"></i> Data & AI</h3><div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Data Visualization</span><span class="tag">Machine Learning</span></div></article>
+          <article class="glass skill-card" data-aos="fade-up" data-aos-delay="170"><h3><i class="fa-solid fa-people-group"></i> Soft Skills</h3><div class="tags"><span class="tag">Problem-Solving</span><span class="tag">Team Collaboration</span><span class="tag">Adaptability</span><span class="tag">Quick Learning</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="internship">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">02 / Experience</div><h2>Learning by <span class="gradient-text">building.</span></h2><p>Hands-on experience turning requirements into useful, working software.</p></div>
+        <div class="timeline">
+          <article class="glass timeline-item" data-aos="fade-up">
+            <div class="item-top"><h3>Android App Development Intern <span style="color:var(--muted);font-weight:500">· InfoTech Clinic</span></h3><span class="date">JUN 2025 — JUL 2025</span></div>
+            <p class="subline">Digital medical record management application</p>
+            <ul class="content-list"><li>Engineered a Java-based Android app with offline CRUD operations and multi-profile management.</li><li>Implemented report uploads and structured medical-detail storage using SQLite.</li><li>Collaborated with a five-member team to integrate features, debug issues, and improve usability.</li></ul>
+            <div class="techline"><strong>STACK</strong><span class="tag">Java</span><span class="tag">SQLite</span><span class="tag">Android Studio</span><span class="tag">XML</span><a class="text-link" href="https://drive.google.com/file/d/1O34PPZL_dx6d-LZmIew5WinnGcBS8mLo/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-award"></i> View internship certificate ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">03 / Selected work</div><h2>Projects with a <span class="gradient-text">purpose.</span></h2><p>Products and experiments built around real-world needs, from community resource sharing to AI-assisted evaluation.</p></div>
+        <div class="projects-grid">
+          <article class="glass project-card featured" data-aos="fade-up">
+            <div class="project-head"><div><div class="kicker">JUL 2026 — PRESENT</div><h3>Apt.share <span style="color:var(--muted);font-weight:500">/ Apartment Resource Sharing Platform</span></h3></div><div class="project-icon"><i class="fa-solid fa-people-roof"></i></div></div>
+            <p>A full-stack community platform that helps verified apartment residents lend and borrow household resources.</p>
+            <ul><li>Designed OTP authentication and community-based access control for resident-focused resource sharing.</li><li>Applied DSA concepts to booking management, contributor rankings, and resource recommendations.</li><li>Containerized services with Docker and Docker Compose; configured GitHub Actions CI and MongoDB Atlas deployment.</li></ul>
+            <div class="tags"><span class="tag">React.js</span><span class="tag">Tailwind CSS</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Socket.IO</span><span class="tag">Docker</span><span class="tag">MongoDB Atlas</span></div>
+            <div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/apt.share-Apartment-Resources-Sharing-System" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository </a></div>
+          </article>
+          <article class="glass project-card" data-aos="fade-up">
+            <div class="project-head"><div><div class="kicker">JUN 2025 — AUG 2025</div><h3>SubEval</h3><p style="margin:3px 0 0">Subjective Assessment & Evaluation Platform</p></div><div class="project-icon"><i class="fa-solid fa-list-check"></i></div></div>
+            <p>An AI-assisted platform for subjective exams, combining rubric-based evaluation with teacher oversight.</p>
+            <ul><li>Integrated Gemini API for rubric-based scoring, confidence scoring, and optional reference answers.</li><li>Enabled human-in-the-loop review, teacher score finalization, and role-based analytics dashboards.</li></ul>
+            <div class="tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Gemini API</span></div>
+            <div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/SubEval-Subjective-Assessment-and-Evaluation-Platform" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository </a></div>
+          </article>
+          <article class="glass project-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="project-head"><div><div class="kicker">APR 2025 — JUN 2025</div><h3>SafeHopp</h3><p style="margin:3px 0 0">Travel Safety Bot</p></div><div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div></div>
+            <p>A responsive AI-powered travel safety chatbot with location-aware reports and destination risk exploration.</p>
+            <ul><li>Used Leaflet.js for interactive risk-zone maps and destination-based queries.</li><li>Combined risk assessment and emergency contacts in one interface.</li></ul>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span><span class="tag">Gemini API</span><span class="tag">Leaflet.js</span></div>
+            <div class="project-links"><a class="text-link" href="https://travel-safety-alert-bot.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Live link </a></div>
+          </article>
+
+          <article class="glass project-card" data-aos="fade-up">
+            <div class="project-head"><div><div class="kicker">MACHINE LEARNING</div><h3>AI-Based Credit Risk Assessment</h3></div><div class="project-icon"><i class="fa-solid fa-chart-line"></i></div></div>
+            <p>A machine-learning application that estimates loan risk using applicant and loan attributes, with a dashboard for interactive predictions.</p>
+            <ul><li>Prepared and encoded credit-risk data, handled preprocessing, and scaled numeric features.</li><li>Trained and compared Random Forest and XGBoost classifiers.</li><li>Connected serialized models to a Flask API and Streamlit dashboard for predictions.</li></ul>
+            <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Flask</span><span class="tag">Streamlit</span></div>
+            <div class="project-links"><a class="text-link" href="https://credit-risk-assess.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Live link </a></div>
+          </article>
+          <article class="glass project-card" data-aos="fade-up" data-aos-delay="70">
+            <div class="project-head"><div><div class="kicker">PYTHON / DESKTOP APP</div><h3>AI-Powered Directory Management System</h3></div><div class="project-icon"><i class="fa-solid fa-folder-tree"></i></div></div>
+            <p>A desktop utility for organizing directories, detecting duplicate files, and visualizing file information.</p>
+            <ul><li>Built a Tkinter GUI for file and folder operations, including rename workflows.</li><li>Added duplicate-detection functionality and visual summaries.</li></ul>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">scikit-learn</span></div>
+            <div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/AI-Powered-Directory-Management-System" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository </a></div>
+          </article>
+<article class="glass project-card" data-aos="fade-up"><div class="project-head"><div><div class="kicker">DATA ANALYTICS</div><h3>Nykaa Popular Brands Analytics Dashboard</h3></div><div class="project-icon"><i class="fa-solid fa-chart-column"></i></div></div><p>Analytics dashboard focused on exploring popular brands on Nykaa and presenting brand-level insights.</p><div class="tags"><span class="tag">Power BI</span><span class="tag">Data Analytics</span><span class="tag">Dashboard</span></div><div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/Nykaa-Popular-Brands-Analytics-Dashboard" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository ↗</a></div></article>
+<article class="glass project-card" data-aos="fade-up"><div class="project-head"><div><div class="kicker">MACHINE LEARNING</div><h3>Credit Risk Prediction</h3></div><div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div></div><p>Machine-learning project focused on predicting credit risk from applicant and loan data.</p><div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Credit Risk</span></div><div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/Credit-Risk-Prediction" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository ↗</a></div></article>
+<article class="glass project-card" data-aos="fade-up"><div class="project-head"><div><div class="kicker">MACHINE LEARNING</div><h3>Product Price Predictor</h3></div><div class="project-icon"><i class="fa-solid fa-tags"></i></div></div><p>Data-driven project for estimating product prices from product information.</p><div class="tags"><span class="tag">Python</span><span class="tag">Regression</span><span class="tag">Data Science</span></div><div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/Product-Price-Predictor" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository ↗</a></div></article>
+<article class="glass project-card" data-aos="fade-up"><div class="project-head"><div><div class="kicker">DATA VISUALIZATION</div><h3>India's Air Quality Visualization Dashboard</h3></div><div class="project-icon"><i class="fa-solid fa-wind"></i></div></div><p>Dashboard project that visualizes air-quality information for India.</p><div class="tags"><span class="tag">Microsoft Excel</span><span class="tag">Data Visualization</span><span class="tag">Dashboard</span></div><div class="project-links"><a class="text-link" href="https://github.com/NyasaVishwas/India-s-Air-Quality-Visualization-Dashboard" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View repository ↗</a></div></article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="profiles">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">04 / Coding activity</div><h2>Code, learn, <span class="gradient-text">repeat.</span></h2><p>Visual snapshots and direct links to my coding profiles. Public statistics are provided by the platforms or third-party widgets where available.</p></div>
+        <div class="profile-grid profile-grid-five">
+          <article class="glass profile-card" data-aos="fade-up"><h3><i class="fa-brands fa-github" style="color:var(--cyan)"></i> GitHub</h3><p>Repositories & contributions</p><img src="https://github-readme-stats.vercel.app/api?username=NyasaVishwas&amp;show_icons=true&amp;hide_border=true&amp;bg_color=101426&amp;title_color=69e7f5&amp;text_color=cbd4f2&amp;icon_color=ad8cff" alt="GitHub profile statistics for NyasaVishwas" loading="lazy"><div class="profile-actions"><a class="text-link" href="https://github.com/NyasaVishwas" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></article>
+          <article class="glass profile-card" data-aos="fade-up" data-aos-delay="40"><h3><i class="fa-solid fa-code" style="color:var(--purple)"></i> LeetCode</h3><p>Problem-solving practice</p><img src="https://leetcard.jacoblin.cool/nyasavishwas?theme=dark&amp;font=Manrope&amp;ext=heatmap" alt="LeetCode statistics and activity for nyasavishwas" loading="lazy"><div class="profile-actions"><a class="text-link" href="https://leetcode.com/u/nyasavishwas/" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></article>
+          <article class="glass profile-card" data-aos="fade-up" data-aos-delay="80"><h3><i class="fa-brands fa-hackerrank" style="color:var(--green)"></i> HackerRank</h3><p>Java badge & certifications</p><div class="profile-metrics"><div><strong>5★</strong><span>Java badge</span></div><div><strong>SQL</strong><span>Basic certificate</span></div></div><div class="profile-actions"><a class="text-link" href="https://www.hackerrank.com/profile/nyasaavishwass" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></article>
+          <article class="glass profile-card" data-aos="fade-up" data-aos-delay="120"><h3><i class="fa-solid fa-laptop-code" style="color:var(--cyan)"></i> CodeChef</h3><p>Competitive programming</p><div class="profile-placeholder"><i class="fa-solid fa-chart-simple"></i><span>Open profile for current rating and contest history</span></div><div class="profile-actions"><a class="text-link" href="https://www.codechef.com/users/nyasavishwas" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></article>
+          <article class="glass profile-card" data-aos="fade-up" data-aos-delay="160"><h3><i class="fa-solid fa-terminal" style="color:var(--purple)"></i> GeeksforGeeks</h3><p>Practice & problem-solving</p><div class="profile-placeholder"><i class="fa-solid fa-chart-simple"></i><span>Open profile for current score and solved count</span></div><div class="profile-actions"><a class="text-link" href="https://www.geeksforgeeks.org/profile/nyasavishwas" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></article>
+          <article class="glass profile-card" data-aos="fade-up" data-aos-delay="200"><h3><i class="fa-solid fa-ranking-star" style="color:var(--green)"></i> Codeforces</h3><p>Contest ratings & problem-solving</p><div class="profile-placeholder"><i class="fa-solid fa-chart-simple"></i><span>Open profile for current rating and contest history</span></div><div class="profile-actions"><a class="text-link" href="https://codeforces.com/profile/nyasavishwas" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></article>
+        </div>
+        <p class="certificate-note">Live widgets rely on external services and may be rate-limited or unavailable. Ratings and solved counts are not hardcoded.</p>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">05 / Training</div><h2>Building a <span class="gradient-text">strong foundation.</span></h2></div>
+        <article class="glass training-card" data-aos="fade-up">
+          <div class="training-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div><div class="item-top"><h3>Full Stack (MERN) with Gen AI</h3><span class="date">JUN 2025 — JUL 2025</span></div><p>W3Grads</p><p style="margin-top:12px">Built end-to-end web applications using React.js, Node.js, Express.js, and MongoDB Atlas. Practiced REST API development, database integration, and frontend-backend communication, and explored integrating AI APIs into web workflows.</p><div class="tags"><span class="tag">MERN Stack</span><span class="tag">REST APIs</span><span class="tag">MongoDB Atlas</span><span class="tag">Generative AI</span></div><div class="project-links"><a class="text-link" href="https://drive.google.com/file/d/1WyWpoDQfLOT_YXuhPMVZU78fe6qGEK6R/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-award"></i> View training certificate ↗</a></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="certificates"><div class="container">
+      <div class="section-head" data-aos="fade-up"><div class="kicker">06 / Credentials</div><h2>Certificates & <span class="gradient-text">continuous learning.</span></h2><p>Credentials across software engineering, data, AI, cloud, networking, web design, and professional skills. Select a card to open the credential page.</p></div>
+      <div class="certificate-tools"><input id="certificateSearch" type="search" placeholder="Search certificates or issuers…" aria-label="Search certificates"><span id="certificateCount" aria-live="polite">21 certificates</span></div>
+      <div class="cert-grid" id="certificateGrid">
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Privacy & Security</p><h3>Privacy and Security in Online Social Media</h3><p>NPTEL</p><a class="text-link" href="https://drive.google.com/file/d/1rxPF03gw-5JDLz6aJUZoHvj9aw9GMLqW/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View certificate ↗</a></div></article><article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Cloud</p><h3>Oracle Data Platform 2025 Certified Foundations Associate</h3><p>Oracle</p><a class="text-link" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=DB0A43BB17FE9F140697BAD84E78EF81E1E35F6A4D4A57DF9B9F54AB8E0C869F" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">AI & Cloud</p><h3>Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</h3><p>Oracle</p><a class="text-link" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=CA8D2809A6191D548062805004F1A585554D0099280650BCC150FFD973B46AFC" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Marketing</p><h3>SEO</h3><p>HubSpot Academy</p><a class="text-link" href="https://app-na2.hubspot.com/academy/achievements/j61mwm29/en/1/nyasa-vishwas/seo" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Programming</p><h3>Java (Basic)</h3><p>HackerRank</p><a class="text-link" href="https://www.hackerrank.com/certificates/69f7cec9a934" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Programming</p><h3>SQL (Basic)</h3><p>HackerRank</p><a class="text-link" href="https://www.hackerrank.com/profile/nyasaavishwass" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Analytics</p><h3>Data Visualization and Presentation</h3><p>IBM SkillsBuild</p><a class="text-link" href="https://www.credly.com/badges/bf37d4f9-6e0a-4357-b28d-13b52fe46791/linked_in_profile" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Analytics</p><h3>Introduction to Inferential and Descriptive Statistics</h3><p>IBM</p><a class="text-link" href="https://www.credly.com/badges/f6b3a367-9e03-4f61-8ed7-f1f14199db81/linked_in_profile" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Analytics</p><h3>Data Collection and Analysis</h3><p>IBM</p><a class="text-link" href="https://www.credly.com/badges/c9062f27-6718-4745-a37c-96791ba676aa/linked_in_profile" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Analytics</p><h3>Data Classification</h3><p>IBM</p><a class="text-link" href="https://www.credly.com/badges/31ecadeb-6b22-4aca-94e9-9dd368455a59/linked_in_profile" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Analytics</p><h3>Data Usability for Organizations</h3><p>IBM</p><a class="text-link" href="https://www.credly.com/badges/a6ca5923-4b21-4646-9b3b-79f131a93e69/linked_in_profile" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Data & Analytics</p><h3>Data Preparation for Analysis</h3><p>IBM</p><a class="text-link" href="https://www.credly.com/badges/b7d8176d-ef1a-493f-b673-d1b431c90789/linked_in_profile" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Computer Science</p><h3>Computational Theory: Language Principle & Finite Automata Theory</h3><p>Skillsoft</p><a class="text-link" href="https://skillsoft.digitalbadges.skillsoft.com/1d968555-3ae7-4562-87d7-414bd39eeb87#acc.IK8E7qa3" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Professional Skills</p><h3>Leadership Communication Skills for Influence and Impact</h3><p>Udemy</p><a class="text-link" href="https://www.udemy.com/certificate/UC-2bd4d060-08af-4e31-bf83-d19dd585b1ad/" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Web Development</p><h3>Responsive Web Design</h3><p>freeCodeCamp</p><a class="text-link" href="https://www.freecodecamp.org/certification/nyasavishwas/responsive-web-design" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Software Engineering</p><h3>Software Engineering: Implementation and Testing</h3><p>Coursera</p><a class="text-link" href="https://www.coursera.org/account/accomplishments/verify/RY8NH9942AML" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Networking</p><h3>The Bits and Bytes of Computer Networking</h3><p>Coursera</p><a class="text-link" href="https://www.coursera.org/account/accomplishments/verify/CDYVH3QD4MPT" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Computer Science</p><h3>Introduction to Hardware and Operating Systems</h3><p>Coursera</p><a class="text-link" href="https://www.coursera.org/account/accomplishments/verify/U31UXVNRLTAL" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Computer Science</p><h3>Digital Systems: From Logic Gates to Processors</h3><p>Coursera</p><a class="text-link" href="https://www.coursera.org/account/accomplishments/verify/MTUVHMTW7W3X" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Networking</p><h3>Computer Communications Specialization</h3><p>Coursera</p><a class="text-link" href="https://www.coursera.org/account/accomplishments/specialization/LXZ20CSTBDOA" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article>
+<article class="glass cert-card" data-aos="fade-up"><div class="cert-icon"><i class="fa-solid fa-certificate"></i></div><div><p class="cert-category">Language</p><h3>EF SET English Certificate — 71/100 (C2 Proficient)</h3><p>EF SET</p><a class="text-link" href="https://cert.efset.org/en/1hcCGc" target="_blank" rel="noopener noreferrer">View credential ↗</a></div></article></div>
+      <p class="certificate-note">Credential pages are hosted by their issuing platforms. Some providers may require sign-in.</p>
+    </div></section>
+
+    <section id="achievements">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">07 / Milestones</div><h2>A few proud <span class="gradient-text">moments.</span></h2></div>
+        <div class="achievement-grid">
+          <article class="glass achievement-card" data-aos="fade-up"><div class="achievement-icon"><i class="fa-solid fa-star"></i></div><div><h3>5-Star C++ Programming Badge</h3><p>HackerRank · January 2026</p></div></article>
+          <article class="glass achievement-card" data-aos="fade-up" data-aos-delay="80"><div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div><div><h3>Top 30 out of 500+ teams</h3><p>Code-e-Manipal Hackathon · Manipal University Jaipur · March 2025</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up"><div class="kicker">08 / Education</div><h2>The journey <span class="gradient-text">so far.</span></h2></div>
+        <div class="timeline">
+          <article class="glass timeline-item education-card" data-aos="fade-up"><div class="item-top"><h3>B.Tech — Computer Science & Engineering</h3><span class="date">AUG 2023 — PRESENT</span></div><p class="school">Lovely Professional University · Phagwara, Punjab</p><div class="edu-meta"><span>CGPA: 8.51</span><span>Undergraduate</span></div></article>
+          <article class="glass timeline-item education-card" data-aos="fade-up"><div class="item-top"><h3>Intermediate</h3><span class="date">2022 — 2023</span></div><p class="school">National Institute of Open Schooling · Noida, Uttar Pradesh</p><div class="edu-meta"><span>75%</span></div></article>
+          <article class="glass timeline-item education-card" data-aos="fade-up"><div class="item-top"><h3>Matriculation</h3><span class="date">2018 — 2019</span></div><p class="school">Bishop Scott Girls School · Patna, Bihar</p><div class="edu-meta"><span>94%</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="glass contact-panel" data-aos="zoom-in">
+          <div class="kicker">09 / What's next?</div><h2>Let's build something <span class="gradient-text">meaningful.</span></h2>
+          <p>Have an opportunity, a project idea, or just want to talk tech? I'm always happy to connect.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="mailto:nyasaavishwass@gmail.com"><i class="fa-regular fa-envelope"></i> nyasaavishwass@gmail.com</a><a class="btn" href="tel:+919905109889"><i class="fa-solid fa-phone"></i> Call me</a></div>
+          <div class="socials" style="justify-content:center"><a href="https://linkedin.com/in/nyasavishwas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/NyasaVishwas" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="mailto:nyasaavishwass@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="logo" href="#home">nyasa<span>.</span></a><p class="made">Made with <span>♥</span> by Nyasa Vishwas</p><div class="socials"><a href="https://linkedin.com/in/nyasavishwas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://github.com/NyasaVishwas" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a><a href="mailto:nyasaavishwass@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></div></div></footer>
+  <a class="back-top" id="backTop" href="#home" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    AOS.init({duration:750, once:true, offset:55, easing:'ease-out-cubic'});
+    new Typed('.typed',{strings:['Full-Stack Developer','MERN Stack Enthusiast','Problem Solver','CSE Student at LPU'],typeSpeed:55,backSpeed:28,backDelay:1350,startDelay:350,loop:true,smartBackspace:true});
+    const navbar=document.getElementById('navbar'),backTop=document.getElementById('backTop'),menuToggle=document.getElementById('menuToggle'),navLinks=document.getElementById('navLinks');
+    function onScroll(){navbar.classList.toggle('scrolled',window.scrollY>24);backTop.classList.toggle('show',window.scrollY>450)}
+    window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+    menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.innerHTML='<i class="fa-solid fa-bars"></i>'}));
+    const certificateSearch=document.getElementById('certificateSearch');
+    if(certificateSearch){
+      const cards=[...document.querySelectorAll('#certificateGrid .cert-card')],count=document.getElementById('certificateCount');
+      certificateSearch.addEventListener('input',()=>{const q=certificateSearch.value.trim().toLowerCase();let n=0;cards.forEach(card=>{const show=card.textContent.toLowerCase().includes(q);card.style.display=show?'flex':'none';if(show)n++});count.textContent=n+' certificate'+(n===1?'':'s')});
+    }
+    const sections=[...document.querySelectorAll('main section[id]')],links=[...navLinks.querySelectorAll('a')];
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-35% 0px -55% 0px'});
+    sections.forEach(section=>observer.observe(section));
+  </script>
+</body>
+</html>
